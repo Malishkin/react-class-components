@@ -1,8 +1,8 @@
-
+import Customers from './components/Customers';
 function App() {
   return (
     <div>
-     <h1>Class Based App</h1>
+     <Customers />
     </div>
   );
 }
