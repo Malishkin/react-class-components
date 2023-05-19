@@ -1,4 +1,4 @@
-import { useState, Component } from "react";
+import { Component } from "react";
 import Customer from "./Customer";
 
 import styles from "./Customers.module.css";
@@ -10,19 +10,28 @@ import styles from "./Customers.module.css";
 // ];
 
 class Customers extends Component {
-
-  constructor() { 
+  constructor() {
     super();
     this.state = {
       showCustomers: true,
-      someState: 'Foo'
+      someState: "Foo",
     };
   }
 
+  componentDidUpdate() {
+    // try {
+    //   someCodeWithPotentialErrors();
+    // } catch {
+    //   // Обработка ошибки
+    // }
+    if (this.props.customers.length === 0) {
+      throw new Error("Нет заказчиков!");
+    }
+  }
 
   toggleCustomersHandler() {
     // this.state.showCustomers = false; - НЕПРАВИЛЬНО!
-     this.setState((curState) => {
+    this.setState((curState) => {
       return { showCustomers: !curState.showCustomers };
     });
   }
